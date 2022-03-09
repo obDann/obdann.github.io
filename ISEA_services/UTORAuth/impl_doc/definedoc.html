@@ -1,0 +1,142 @@
+This page describes the various “roles” a person at UofT can assume. For each of these flags, ‘TRUE’ in the UTORable directory indicates that the person holds the role indicated by the flag. ‘FALSE’, or the absence of the flag indicates that the person does not hold that role.
+
+<p class="sub-heading">isstudent</p>
+
+A person is marked isstudent if at least one of the following is true:
+
+<ol type="1" id="oon">
+  <li> They are a ROSI student with at least one of the following three criterion (status derived from ROSI fieldcurr_reg_sts_cd):
+    <ul>
+      <li>REG or INVIT status in the current session</li>
+      <li>REG or INVIT status in the next session</li>
+      <li>REG status in the previous session</li>
+    </ul>
+  </li>
+  <li>They have status as an “other” student; this includes PGME and SCS students, among others.</li>
+</ol>
+
+<p class="sub-heading">isstaf</p>
+
+A person is marked as isstaff if one of the following is true:
+
+<ol id="oon" type="1">
+  <li>They are in the batch feed from HRIS to UTORauth marked as an active staff member.</li>
+  <li>They are marked as isotherstaff</li>
+  <li>They are marked as isretiredstaff</li>
+</ol>
+
+<p class="sub-heading">isactivestaff</p>
+The definition of isactivestaff is identical to isstaff except that retired staff members are not included.
+
+<p class="sub-heading">isfaculty</p>
+A person is marked as isfaculty if one of the following is true:
+
+<ol id=oon type="1">
+  <li>They are in the batch feed from HRIS to UTORauth as an active faculty member.  </li>
+  <li>They are marked as isotherfaculty</li>
+  <li>They are marked as isretiredfaculty</li>
+  <li>They are marked as isstatusonly</li>
+</ol>
+
+<p class="sub-heading">isactivefaculty</p>
+The definition of isactivefaculty is identical to isfaculty except that retired faculty members are not included.
+
+
+<p class="sub-heading">isgrad</p>
+A person is marked isgrad if at least one of the following is true:
+
+<ol id="oon" type="1">
+  <li>They are a ROSI student with at least one of the following two criterion (instruction level derived from ROSI fieldlevel_of_instr):
+    <ul id="oon">
+      <li>instruction level is ‘grad’ in the current session</li>
+      <li>instruction level is not ‘undergrad’ in the current session, and is ‘grad’ in the next session/li>
+    </ul>
+  </li>
+  <li>They are marked as an “other” grad student; PGME students are grad students</li>
+</ol>
+
+
+<p class="sub-heading">isundergrad</p>
+A person is marked isundergrad if at least one of the following is true:
+<ol type="1" id="oon">
+  <li>They are a ROSI student with at least one of the following two criterion (instruction level derived from ROSI fieldlevel_of_instr):  </li>
+  <ul id="oon">
+    <li>instruction level is ‘undergrad’ in the current session</li>
+    <li>instruction level is not ‘grad’ in the next session, and is ‘undergrad’ in the next session</li>
+  </ul>
+  <li>They are marked as an “other” undergrad student; UTS students are undergrad students</li>
+</ol>
+
+NOTE: This flag is not turned off when a person ceases to be a student. Consequently, it should always be used in conjunction with isstudent if you are determining if a student is a current undergraduate student.
+
+<p class="sub-heading">isfulltime</p>
+
+A person is marked isfulltime if the person is a ROSI student with one of the following criterion (fulltime/parttime class is taken from the ROSI field attendance_class):
+
+<ol type="1" id="oon">
+  <li>attendance class is fulltime in either the current or next sessions, and those sessions have either the REG or INVIT status.
+  </li>
+  <li>attendance class is fulltime in the previous session, and that session has a REG status </li>
+  <li>The person is marked as isotherstudent.</li>
+</ol>
+
+<p class="sub-heading">isalumni</p>
+
+A person is marked isalumni if one of the following is true:
+<ol type="1" id="oon">
+  <li>They are marked as isgraduate</li>
+  <li>Historically, if the borrower_class (which is essentially what level of borrowing privileges they have) in their library record is set to be ALUMNI.  While this data was used in the past, no new isalumni flags are added this way.</li>
+</ol>
+
+<p class="sub-heading">rosiactive</p>
+This is the last session that a person was active as a student in ROSI. For many students, this will be blank as we do not have info. It is set as follows:
+
+<ol type="1" id="oon">
+  <li>If the isstudent flag is TRUE, rosiactive is set to the current session or to the upcoming fall session if computed during the summer session.  </li>
+  <li>if the isstudent flag is FALSE, rosiactive set to last session that they had registered status.</li>
+</ol>
+
+
+<p class="sub-heading">isstatusonly</p>
+
+A person is marked as isstatusonly if one of the following is true:
+
+<ol type="1" id="oon">
+  <li>They were included in one of the dumps that we have received from HRIS that had listings of staff who were status only. This data is updated infrequently at best.
+  </li>
+  <li>They were manually set to be ‘status only’ using a tool given to Perry Hall that sets the isstatusonly flag to ‘TRUE’ in situations he deems suitable.
+  </li>
+</ol>
+
+<p class="sub-heading">isregistered</p>
+
+A person is marked isregistered if the person is a ROSI student with REG status in either the current or next session. (As with isstudent, status is derived from the ROSI field curr_reg_sts_cd).
+
+<p class="sub-heading">isinvited</p>
+A person is marked isinvited if the person is a ROSI student with INVIT status in either the current or next session. (As with isstudent, status is derived from the ROSI field curr_reg_sts_cd).
+
+<p class="sub-heading">isgraduate</p>
+A person is marked isgraduate if they have appeared in one of the convocation lists we receive from ROSI.  If this flag is set on, it will remain on.
+
+<p class="sub-heading">disgraduate</p>
+Date that the isgraduate flag was set to TRUE. This flag will be updated if the person graduates a second time.
+<p class="sub-heading">disalumni</p>
+Date that the isalumni flag was set to TRUE.
+<p class="sub-heading">isretiredstaff</p>
+A person is marked isretiredstaff if they were a HRIS staff member when they worked at the university and The ‘retired’ flag from HRIS is set to be true
+<p class="sub-heading">isretiredfaculty</p>
+A person is marked isretiredfaculty if they were a HRIS faculty member when they worked at the university and The ‘retired’ flag from HRIS is set to be true
+<p class="sub-heading">isother</p>
+A person is marked isother has status as an “other” student; this includes PGME and SCS students (see ispgme below).
+<p class="sub-heading">isotherstaff</p>
+A person is marked isotherstaff if they are coming in marked as staff in one of the “other” feeds.
+<p class="sub-heading">isotherfaculty</p>
+A person is marked isotherfaculty if they are coming in marked as faculty in one of the “other” feeds.
+<p class="sub-heading">isscsstaff</p>
+A person is marked isscsstaff if they were included in the latest feed from SCS (School of Continuing Studies).
+<p class="sub-heading">ispgme</p>
+A person is marked ispgme if they were included in the latest feed from PGME.
+<p class="sub-heading">isuts</p>
+A person is marked isuts if they were included in the latest feed from UTS.
+
+<p>last updated 2006/08/29 19:41:12: v. 1.7</p>

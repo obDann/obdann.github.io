@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+  <link rel="stylesheet" href="../style.css">
+
+</html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="jquery.js"></script>
+  <script>
+  $(function(){
+    $("#navpack").load("../nav_pack.html");
+    $("#about").load("./about.html");
+    $("#setup").load("./setup.html");
+    $("#faq").load("./faq.html");
+    $("#news").load("./news.html");
+  });
+  </script>
+
+
+  <title>eTokens</title>
+</head>
+<body>
+
+  <div class="my-container">
+    <div class="my-header"><h3>ISEA header</h3></div>
+    <div class="body-container">
+      <div class="my-navigation">
+        <div id="navpack"></div>
+      </div>
+      <div class="content">
+        <h1 class="center-header">eTokens</h1>
+        <!-- navigation from bootstrap -->
+        <ul class="nav nav-tabs">
+          <li class="active"><a data-toggle="tab" href="#about">About</a></li>
+          <li><a data-toggle="tab" href="#setup">Set-up</a></li>
+          <li><a data-toggle="tab" href="#das">For Department Administrators</a></li>
+          <li><a data-toggle="tab" href="#csas">Common Situations and Solutions</a></li>
+          <li><a data-toggle="tab" href="#faq">FAQ</a></li>
+          <li><a data-toggle="tab" href="#cusc">Common Use Cases</a></li>
+          <li><a data-toggle="tab" href="#news">News</a></li>
+        </ul>
+
+
+
+        <div class="tab-content">
+          <div id="about" class="tab-pane fade in active"></div>
+
+
+
+
+          <div id="setup" class="tab-pane fade"></div>
+
+
+
+
+          <div id="das" class="tab-pane fade">
+            <h3 class="center-header">For Department Administators</h3>
+            <button class="collapsible">New User Enrol Step-by-step Procedures</button>
+            <div class="colla" >
+              <p>This section provides instructions and screen shots describing the typical functions that a department
+                administrator may expect to encounter. In order to perform these tasks, the department administrator (DA for
+                short), must have the following prerequisites: </p>
+              <ol type="1" id="oon">
+                <li> an eToken issued to themselves by the ITS eToken administrator. </li>
+                <li>the desktop computer used to run the SafeNet Authentication Manager (SAM) must run a current Windows
+                  operating system. </li>
+              </ol>
+              <p>The Internet Explorer web browser must be used to interact with SAM and must be configured as described in
+                the Technical Information section.</p>
+              <p>You must have a supply of blank eTokens which can be used for issuing. Contact the ITS eToken
+                administrator to obtain blank eTokens. </p>
+              <b>Enrolling a New User</b>
+              <ol type="1" id="oon">
+                <li>Insert a blank eToken.</li>
+                <li>Access SAM by inserting your eToken, open Internet Explorer, and access the URL: </li>
+                <a href="https://ekey.utoronto.ca/sammanage/">https://ekey.utoronto.ca/sammanage/</a>
+                <li>You will notice your UTORid in the upper right</li>
+                <li>Select 'Deployment'</li>
+                <li>'Search for:' users by username</li>
+                <li>'Search criteria:' Enter the UTORid of the enrollee. </li>
+                <li>Select 'Go'</li>
+                <li> SAM will display the UTORid under the 'account name'. Ensure that the status of the account is: 'No token'</li>
+                <li> Check the box beside the correct UTORid, select 'Enroll' button. </li>
+                  <img src="./imgs/sample_enroll_1.png" style="width:75%;height:75%;">
+                <li>SAM will process and stop at the following point:</li>
+                <li> Select 'Run'. SAM will enroll the user and populate the eToken with a certificate. This will take up to a minute.</li>
+                  <img src="./imgs/sample_enroll_2.png" style="width:75%;height:75%;">
+                <li>Click the 'Done' button. The eToken is now ready for the user. </li>
+              </ol>
+              <b>Notes:</b>  The DA cannot and should not assign an eToken to a person who already has one
+            </div>
+            <button class="collapsible">Un-assign User Step-by-Step Procedures</button>
+            <div class="colla">
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            </div>
+            <button class="collapsible">Un-assign User Step-by-Step Procedures</button>
+            <div class="colla">
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            </div>
+            <button class="collapsible">Unlock eToken Remotely</button>
+            <div class="colla">
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            </div>
+            <button class="collapsible">Password Resets</button>
+            <div class="colla">
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            </div>
+            <button class="collapsible">Replacing Lost or Forgotten eTokens Step by Step Procedure</button>
+            <div class="colla">
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            </div>
+            <button class="collapsible">Initializing Returned/Found eTokens</button>
+            <div class="colla">
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            </div>
+            <button class="collapsible">Replacing Damaged eTokens</button>
+            <div class="colla">
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            </div>
+          </div>
+
+
+
+
+          <div id="csas" class="tab-pane fade">
+            <h3 class="center-header">Common Situations and Solutions</h3>
+            <div id="oon">
+            Departmental <a href="https://isops.noc.utoronto.ca/etokendbmodification/Admincheck">eToken Administrators</a> UTORid and UTORid password required can assist with the most common problems . If your Departmental Administrator is not able to help with your problem, please <a href="https://isea.utoronto.ca/contact/">contact us</a> with the following information: 
+
+            <p>Name</p>
+            <p>UTORid</p>
+            <p>Department/Division (Faculty) </p>
+            <p>System you are trying to connect to </p>
+            <p>Description of the problem, including any steps taken so far to fix the problem </p>
+
+            <table class="table" data-tablelook="1184" data-tablestyle="MsoTableGrid">
+              <tbody>
+              <tr>
+              <td data-celllook="0"><b>Issue:</b><span data-ccp-props="{}"> </span></td>
+              <td data-celllook="0"><b>Action:</b><span data-ccp-props="{}"> </span></td>
+              </tr>
+              <tr>
+              <td data-celllook="0">Request an eToken<span data-ccp-props="{}"> </span></td>
+              <td data-celllook="0"><a href="https://isops.noc.utoronto.ca/etokendbmodification/Admincheck">Contact Departmental Administrator</a></td>
+              </tr>
+              <tr>
+              <td data-celllook="0">Forgotten Password/Locked eToken<span data-ccp-props="{}"> </span></td>
+              <td data-celllook="0"><a href="https://isops.noc.utoronto.ca/etokendbmodification/Admincheck">Contact Departmental Administrator</a></td>
+              </tr>
+              <tr>
+              <td data-celllook="0">Lost or Forgotten eToken<span data-ccp-props="{}"> </span></td>
+              <td data-celllook="0"><a href="https://isops.noc.utoronto.ca/etokendbmodification/Admincheck">Contact Departmental Administrator</a></td>
+              </tr>
+              <tr>
+              <td data-celllook="0">Cannot connect to Cisco Anyconnect<span data-ccp-props="{}"> </span></td>
+              <td data-celllook="0">Contact eToken service desk : auth.admin@utoronto.ca</td>
+              </tr>
+              <tr>
+              <td data-celllook="0">Can connect to Cisco Anyconnect but cannot connect to AMS (FIS, HRIS, etc)<span data-ccp-props="{}"> </span></td>
+              <td data-celllook="0">Contact AMS help: access.easi@utoronto.ca</td>
+              </tr>
+              <tr>
+              <td data-celllook="0">Can connect to Cisco Anyconnect but cannot connect to ROSI<span data-ccp-props="{}"> </span></td>
+              <td data-celllook="0">Contact ROSI help: rosi.help@utoronto.ca<span data-ccp-props="{}"> </span></td>
+              </tr>
+              <tr>
+              <td data-celllook="0">Transferring to a different U of T Department<span data-ccp-props="{}"> </span></td>
+              <td data-celllook="0">Keep your eToken<span data-ccp-props="{}"> </span></td>
+              </tr>
+              <tr>
+              <td data-celllook="0">Leaving the University<span data-ccp-props="{}"> </span></td>
+              <td data-celllook="0"><a href="https://isops.noc.utoronto.ca/etokendbmodification/Admincheck">Return eToken to Departmental Administrator</a></td>
+              </tr>
+              </tbody>
+              </table>
+            </div>
+          </div>
+
+
+
+
+          <div id="faq" class="tab-pane fade"></div>
+
+
+
+          <div id="cusc" class="tab-pane fade">
+            <h3 class="center-header">Common Use Cases</h3>
+            <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#windows">Cisco AnyConnect on Windows</button>
+            <div id="windows" class="collapse">
+              <p>The Cisco AnyConnect Client must be installed before using UTORvpn on windows.</p>
+              <ol type="1" id="oon">
+                <li>Download the Windows Client file from <a href="https://isops.noc.utoronto.ca/download/">https://isops.noc.utoronto.ca/download/</a>. You must have a valid UTORid and be eligible for the service.</li>
+                <li>Run the installer file, and accept the licence agreement.</li>
+                <li>You will need to be an administrator on your computer to finish installing the client. If you are on a managed workstation, contact your IT support to have them deploy the AnyConnect client.</li>
+              </ol>
+            </div>
+            <div></div>
+            <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#mac">Cisco AnyConnect on Mac</button>
+            <div id="mac" class="collapse">
+              <p>The Cisco AnyConnect Client must be installed before using UTORvpn on OS X.</p>
+              <ol type="1" id="oon">
+                <li>Download the Mac Client file from <a href="https://isops.noc.utoronto.ca/download/">https://isops.noc.utoronto.ca/download/</a>. You must have a valid UTORid and be eligible for the service.</li>
+                <li>Open the .dmg file, an administrator on your computer to do this.</li>
+                <li>Double click on AnyConnect.pkg to start the installer.</li>
+                <li>Click Continue and accept the Licence.</li>
+                <li>Uncheck all modules except VPN. Click Continue.</li>
+                <img src="https://isea.utoronto.ca/wp-content/uploads/2019/06/Screen-Shot-2019-06-19-at-10.17.27-AM-768x542.png" style="width:25%;height:25%;">
+                <li>Complete the install</li>
+              </ol>
+            </div>
+            <div></div>
+            <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#linux">Cisco AnyConnect on Linux</button>
+            <div id="linux" class="collapse">
+              <p>The Cisco AnyConnect Client must be installed before using UTORvpn on Linux.</p>
+              <ol type="1" id="oon">
+                <li>Download the Linux Client file from <a href="https://isops.noc.utoronto.ca/download/">https://isops.noc.utoronto.ca/download/</a>. You must have a valid UTORid and be eligible for the service.</li>
+                <li>Navigate to your Downloads folder an extract tar.gz file to a directory.</li>
+                <li>Navigate to the VPN directory in the extracted directory. Right click in the directory and choose Open In Terminal.</li>
+                <li>Run the command: <code>sudo bash vpn_install.sh</code> and enter your password</li>
+                <li>Agree to the licence agreement and the install will complete</li>
+              </ol>
+            </div>
+            <div></div>
+            <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#d1">Open SSH</button>
+            <div id="d1" class="collapse">
+              <p>This is dummy data</p>
+            </div>
+            <div></div>
+            <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#d2">Windows Remote Desktop Client</button>
+            <div id="d2" class="collapse">
+              <p>This is dummy data</p>
+            </div>
+            <div></div>
+            <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#d3">ROSI</button>
+            <div id="d3" class="collapse">
+              <p>This is dummy data</p>
+            </div>
+            <div></div>
+            <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#d4">SAPgui</button>
+            <div id="d4" class="collapse">
+              <p>This is dummy data</p>
+            </div>
+            <div></div>
+            <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#d5">Apache https Server</button>
+            <div id="d5" class="collapse">
+              <p>This is dummy data</p>
+            </div>
+            <div></div>
+            <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#d6">Browsers - Firefox</button>
+            <div id="d6" class="collapse">
+              <p>This is dummy data</p>
+            </div>
+          </div>
+
+
+
+
+          <div id="news" class="tab-pane fade"></div>
+
+        </div>
+      </div>
+    </div>
+    <div class="footer">footer</div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+  <script src="index.js"></script>
+  <script>
+    var coll = document.getElementsByClassName("collapsible");
+    var i;
+
+    for (i = 0; i < coll.length; i++) {
+      coll[i].addEventListener("click", function() {
+        this.classList.toggle("active");
+        var content = this.nextElementSibling;
+        if (content.style.maxHeight){
+          content.style.maxHeight = null;
+        } else {
+          content.style.maxHeight = content.scrollHeight + "px";
+        }
+      });
+    }
+    </script>
+</body>

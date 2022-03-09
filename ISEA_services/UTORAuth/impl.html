@@ -1,0 +1,24 @@
+<script src="../collapse.js"></script>
+<script>
+  $(function(){
+    $("#authen").load("./impl_doc/authen.html"); 
+    $("#authoriz").load("./impl_doc/authorize.html"); 
+    $("#definedoc").load("./impl_doc/definedoc.html"); 
+  });
+</script>
+
+<h2 class="center-header">Implementing UTORauth</h2>
+
+This section is divided up into 3 subsections
+<ul id="oon">
+  <li><a href="#authentication">Authentication</a> </li>
+  <li><a href="#authorization">Authorization</a></li>
+  <li><a href="#definitions">Definitions</a></li>
+</ul>
+
+<button class="collapsible" id="authentication">Windows Authentication using UTORauth (AKA Kerberos)</button>
+<div class="colla" id="authen"></div>
+<button class="collapsible" id="authorization">Authorization</button>
+<div class="colla" id="authoriz"></div>
+<button class="collapsible" id="definitions">Definitions</button>
+<div class="colla" id="definedoc"></div>

@@ -1,0 +1,166 @@
+
+<script src="../collapse.js"></script>
+
+<h2 class="center-header">UTORvpn</h2>
+
+<p>UTORvpn is a general, remote access, VPN service. It connects your computer to the University’s network and protects the traffic across suspect intermediate networks such as hotels and coffee shops. UTORvpn cannot be combined with other network security measures such as Anonymous VPNs or TOR. When connected, all internet traffic from your computer will pass through UTORvpn. You will sign into UTORvpn using your UTORid and password.</p>
+
+<p>It can be used for easier access to library e-resources and access other services which may be restricted to general on-campus networks. UTORvpn should not be used for privileged access or other security-sensitive work; please see AdminVPN for those needs.</p>
+
+
+<h3>Who can use it?</h3>
+
+<p>UTORvpn is available to all University Faculty and Staff identified through UTORauth. Additionally,  active graduate students and students Sponsored by a Faculty of Staff member.</p>
+
+<p>To sponsor a student for UTORvpn please <a href="https://isea.utoronto.ca/contact/">contact us</a>. You (the sponsor) must email from your University email account with: the UTORid of the student(s) you wish to sponsor; and an expiry date for their use of UTORvpn.</p>
+
+<p>Guest accounts (with a qq prefix) or other irregular accounts cannot connect to UTORvpn.</p>
+
+<h3>What can I use it for?</h3>
+
+Use of UTORvpn is subject to the University’s <a href="https://www.provost.utoronto.ca/planning-policy/information-communication-technology-appropriate-use/">Appropriate use of Technology Guidelines</a>. Most web browsing or common e-communications activities are permitted. Because UTORvpn protects all of your internet traffic, and this is a shared service, please be cognizant of how much bandwidth you are using. If you use more than 5 GB in a session we will alert you by email. If we identify a suspicious or abusive pattern of behaviour we may take further action to protect your account and the integrity of the service.
+
+<h3 class="center-header">Set up</h3>
+
+<button class="collapsible">For Users</button>
+<div class="colla">
+  <p class="sub-heading">Getting Started</p>
+
+  <ul class="oon">
+    <li>
+      <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#windows">Windows</button>
+      <div id="windows" class="collapse">
+        <p>The Cisco AnyConnect Client must be installed before using UTORvpn on windows.</p>
+        <ol type="1" class="oon">
+          <li>Download the Windows Client file from <a href="https://isops.noc.utoronto.ca/download/">https://isops.noc.utoronto.ca/download/</a>. You must have a valid UTORid and be eligible for the service.</li>
+          <li>Run the installer file, and accept the licence agreement.</li>
+          <li>You will need to be an administrator on your computer to finish installing the client. If you are on a managed workstation, contact your IT support to have them deploy the AnyConnect client.</li>
+        </ol>
+      </div>
+    </li>
+    <li>
+      <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#mac">Mac</button>
+      <div id="mac" class="collapse">
+        <p>The Cisco AnyConnect Client must be installed before using UTORvpn on OS X.</p>
+        <ol type="1" class="oon">
+          <li>Download the Mac Client file from <a href="https://isops.noc.utoronto.ca/download/">https://isops.noc.utoronto.ca/download/</a>. You must have a valid UTORid and be eligible for the service.</li>
+          <li>Open the .dmg file, an administrator on your computer to do this.</li>
+          <li>Double click on AnyConnect.pkg to start the installer.</li>
+          <li>Click Continue and accept the Licence.</li>
+          <li>Uncheck all modules except VPN. Click Continue.</li>
+          <img src="https://isea.utoronto.ca/wp-content/uploads/2019/06/Screen-Shot-2019-06-19-at-10.17.27-AM-768x542.png" style="width:25%;height:25%;">
+          <li>Complete the install</li>
+        </ol>
+      </div>
+    </li>
+    <li>
+      <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#linux">Linux</button>
+      <div id="linux" class="collapse">
+        <p>The Cisco AnyConnect Client must be installed before using UTORvpn on Linux.</p>
+        <ol type="1" class="oon">
+          <li>Download the Linux Client file from <a href="https://isops.noc.utoronto.ca/download/">https://isops.noc.utoronto.ca/download/</a>. You must have a valid UTORid and be eligible for the service.</li>
+          <li>Navigate to your Downloads folder an extract tar.gz file to a directory.</li>
+          <li>Navigate to the VPN directory in the extracted directory. Right click in the directory and choose Open In Terminal.</li>
+          <li>Run the command: <code>sudo bash vpn_install.sh</code> and enter your password</li>
+          <li>Agree to the licence agreement and the install will complete</li>
+        </ol>
+      </div>
+
+    </li>
+    <li>
+      <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#android">Android</button>
+      <div id="android" class="collapse">
+        <p>The Cisco AnyConnect Client is available for Android 4.0 and up and is available from the Google Play Store.</p>
+        <ol type="1" class="oon">
+          <li>Install the Cisco AnyConnect Client</li>
+          <li>Open the AnyConnect Client and agree to the supplemental licence agreement.</li>
+          <li>You will be warned by AnyConnect that it will require access to the IMEI of your device and report this to administrators. Click OK. You will be prompted by your devices security manager to grant authorization, for the configuration of UTORvpn you may deny permission to make and manage phone calls.</li>
+          <img src="https://isea.utoronto.ca/wp-content/uploads/2019/10/Capture_2019-10-31-13-22-30-241x300.png" style="width:10%;height:10%">
+          <li>Open “Connections”, then “Add New VPN Connection”.</li>
+          <li>Enter the following:</li>
+          <ul id="oon">
+            <li>Description: UTORvpn</li>
+            <li>Server Address: general.vpn.utoronto.ca</li>
+            <img src="https://isea.utoronto.ca/wp-content/uploads/2019/10/Capture_2019-10-31-13-29-03-300x233.png" style="width:10%;height:10%">
+          </ul>
+          <li>Tap “Done” to save the configuration.</li>
+          <li>Return to the main menu.</li>
+        </ol>
+        <p>Swiping the AnyConnect VPN switch to “On” will open a dialog box. If you have more than one connection configured, ensure “Group” is set to “utorvpn”. Then enter your UTORid, Password, and click “Connect”.</p>
+        <img src="https://isea.utoronto.ca/wp-content/uploads/2019/10/Capture_2019-10-31-13-32-50-249x300.png" style="width:10%;height:10%">
+      </div>
+    </li>
+    <li>
+      <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#ios">iOS</button>
+      <div id="ios" class="collapse">
+        <p>The Cisco AnyConnect Client is available from the Apple App Store.</p>
+        <ol type="1" class="oon">
+          <li>Install the Cisco AnyConnect Client</li>
+          <li>Open the AnyConnect Client. You will be prompted to allow AnyConnect to send Notifications, you may allow or dis-allow without impacting your ability to use UTORvpn.</li>
+          <li>Tap “Connections”, then “Add VPN Connection…”.</li>
+          <li>Enter the following:</li>
+          <ul id="oon">
+            <li>Description: UTORvpn</li>
+            <li>Server Address: general.vpn.utoronto.ca</li>
+            <img src="https://isea.utoronto.ca/wp-content/uploads/2019/11/IMG_0011-300x156.jpg" style="width:25%;height:25%">
+          </ul>
+          <li>You will be prompted to add a VPN Configuration. click “Allow”. You may need to enter your device passcode.</li>
+          <li>Tap “Back” to return to the main AnyConnect menu.</li>
+        </ol>
+
+        To Connect:
+
+        <ol type="1" class="oon">
+          <li>Set the “AnyConnect VPN” switch to on, the Authentication screen will display.</li>
+          <li>If you have multiple connections configured ensure that the group is “utorvpn”. Enter your UTORid, Password, and click “Connect”.</li>
+          <li>The “Details” will report “Connected” and a VPN badge will be displayed in the status bar.</li>
+        </ol>
+        
+      </div>
+    </li>
+  </ul>
+
+
+  <p class="sub-heading">Getting Connected</p>
+
+  <ol type="1" class="oon">
+    <li>Open the AnyConnect Client.</li>
+    <li>Enter or select “general.vpn.utoronto.ca” and click “Connect”.</li>
+    <img href="https://isea.utoronto.ca/wp-content/uploads/2019/06/AnyConnect1.png" style="width:25%;height:25%;"></img>
+    
+    <li>An authentication window will open for the group “utorvpn”. Enter your UTORid and Password. Click “OK”.    </li>
+    <img href="https://isea.utoronto.ca/wp-content/uploads/2019/06/AnyConnect2.png" style="width:25%;height:25%;"></img>
+    <li>Your computer will now notify you that it is connected to the VPN.    </li>
+  </ol>
+
+
+  <p class="sub-heading">Disconnecting</p>
+  <ol type="1" class="oon">
+    <li>Open the AnyConnect Client    </li>
+    <li>Click “Disconnect”</li>
+    <img href="https://isea.utoronto.ca/wp-content/uploads/2019/06/AnyConnect4.png" style="width:25%;height:25%;"></img>
+  </ol>
+
+  <div id="plspad"></div>
+
+</div>
+
+<button class="collapsible" id="how-to-serv">For Service Owners</button>
+<div class="colla">
+  <p>If you are the owner or operator of an IT service related to U of T, then you may need to decide to allow, or deny, access to your service for users connecting through UTORvpn.</p>
+  <p>All UTORvpn users are being connected through Carrier Grade NAT. UTORvpn connections will come from the network range: <b>138.51.26.0/24</b></p>
+
+  Specifically, we will block:
+
+  <ul class="oot">
+    <li>Nameserver (port 42)</li>
+    <li>DHCP (ports 67-68)</li>
+    <li>TFTP (port 69)</li>
+    <li>Netbios (ports 135, 137-139)</li>
+    <li>SNMP and SNMP trap (ports 161-162)</li>
+    <li>Ports 445, 593, 707, and 4444</li>
+  </ul>
+  <p>If your service requires additional protocols or ports, please <a href="https://isea.utoronto.ca/contact/">contact us</a> with your business justification. Requests will be reviewed in the context of the service’s intended use and the University’s overall security posture. If your use-cases is limited to specific individuals please consider our <a href="https://isea.utoronto.ca/services/vpn/adminvpn/">AdminVPN service</a>.</p>
+
+  <p>If you are identifying bad conduct originating from the UTORvpn network range, please <a href="https://isea.utoronto.ca/contact/">contact us</a>.  </p>
+</div>

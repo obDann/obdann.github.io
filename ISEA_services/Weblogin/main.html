@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <link rel="stylesheet" href="../style.css">
+
+</html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="jquery.js"></script> 
+  <script>
+  $(function(){
+    $("#navpack").load("../nav_pack.html"); 
+    $("#about").load("./about.html"); 
+    $("#difn").load("./difn.html"); 
+    $("#hwto").load("./hwto.html"); 
+    $("#newscon").load("./newscon.html"); 
+  });
+  </script>
+
+
+  <title>Weblogin</title>
+</head>
+<body>
+
+  <div class="my-container">
+    <div class="my-header"><h3>ISEA header</h3></div>
+    <div class="body-container">
+      <div class="my-navigation">
+        <div id="navpack"></div>
+      </div>
+      <div class="content">
+        <h1 class="center-header">Weblogin</h1>
+        
+        <ul class="nav nav-tabs">
+          <li class="active"><a data-toggle="tab" href="#about">About</a></li>
+          <li><a data-toggle="tab" href="#difn">Display First Name</a></li>
+          <li><a data-toggle="tab" href="#hwto">Service Provider How-to</a></li>
+          <li><a data-toggle="tab" href="#newscon">News</a></li>
+        </ul>
+
+        <div class="tab-content">
+          <div id="about" class="tab-pane fade in active"></div>
+          <div id="difn" class="tab-pane fade"></div>
+          <div id="hwto" class="tab-pane fade"></div>
+          <div id="newscon" class="tab-pane fade"></div>
+        </div>
+        
+        </div>
+      </div>
+    </div>
+    <div class="footer">footer</div>
+  </div>
+</body>

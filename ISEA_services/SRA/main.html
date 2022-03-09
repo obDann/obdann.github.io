@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <link rel="stylesheet" href="../style.css">
+
+</html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="jquery.js"></script> 
+  <script>
+  $(function(){
+    $("#navpack").load("../nav_pack.html"); 
+    $("#about").load("./about.html"); 
+    $("#utor").load("./utor.html"); 
+    $("#admin").load("./admin.html"); 
+    $("#rdg").load("./rdg.html"); 
+    $("#newscon").load("./newscon.html"); 
+  });
+  </script>
+
+
+  <title>Secure and Remote Access</title>
+</head>
+<body>
+
+  <div class="my-container">
+    <div class="my-header"><h3>ISEA header</h3></div>
+    <div class="body-container">
+      <div class="my-navigation">
+        <div id="navpack"></div>
+      </div>
+      <div class="content">
+        <h1 class="center-header">Secure and Remote Access</h1>
+        
+        <ul class="nav nav-tabs">
+          <li class="active"><a data-toggle="tab" href="#about">About</a></li>
+          <li><a data-toggle="tab" href="#utor">UTORvpn</a></li>
+          <li><a data-toggle="tab" href="#admin">AdminVPN</a></li>
+          <li><a data-toggle="tab" href="#rdg">Remote Desktop Gateway</a></li>
+          <li><a data-toggle="tab" href="#newscon">News</a></li>
+        </ul>
+
+        <div class="tab-content">
+          <div id="about" class="tab-pane fade in active"></div>
+          <div id="utor" class="tab-pane fade"></div>
+          <div id="admin" class="tab-pane fade"></div>
+          <div id="rdg" class="tab-pane fade"></div>
+          <div id="newscon" class="tab-pane fade"></div>
+        </div>
+        
+        </div>
+      </div>
+    </div>
+    <div class="footer">footer</div>
+  </div>
+</body>

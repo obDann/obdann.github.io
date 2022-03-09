@@ -1,0 +1,192 @@
+<div id="oon">
+  Quick Navigation:
+  <ul>
+    <li><a href="#server">Server Setup</a></li>
+    <li><a href="#workstation">Workstation Setup</a></li>
+    <li><a href="#populating">Populating the Active Directory Users</a></li>
+    <li><a href="#wins">Windows 7 Authentication</a></li>
+    <li><a href="#contacts">I+TS Contacts</a></li>
+    <li><a href="#notes">Notes and Tips</a></li>
+    <li><a href="#work">Things That Work</a></li>
+    <li><a href="#notwork">Things That Don't Work</a></li>
+  </ul>
+</div>
+
+<h3 class="center-header" id="server">Server Setup</h3>
+  Here are the steps you should follow to set up the server that will be authenticating users.
+
+  <p><b>Note:</b>If you are setting up a test 2003 server, please ensure that the domain name and the workstation computer name are not the same. This may cause confusion for netbios.</p>
+
+  <ol type="1" id="oon">
+    <li>Install Windows Server 2003. It should be a Domain Controller.</li>
+    <li>Register the server in the DNS so that it can be properly resolved by an external machine by name. For example, the test server I set up was called <b>kdcw2k.cns.utoronto.ca</b>, the server name was test and the domain was called <b>kdcw2k</b>.    
+    <p><b>Note</b>With Kerberos, accurate time is crucial. Make sure the server is in the correct time zone and make sure the clock is accurate. More than 5 minutes out and it will NOT work. NTP (Network Time Protocol) is a worthy suggestion!</p>
+    </li>
+
+    <li>Install the Support Tools found on the Windows Server 2003 CD in \support\tools. This gets us the command line utility ksetup required later. You should be able to type ksetup at a CMD prompt and get some output if installed properly. You will Probably need a reboot to get the path set properly. In my test server typing ksetupreturned that the default realm was <b>kdcw2k.cns.utoronto.ca</b> and there were no maps</li>
+    <li>In Active Directory users and Computer you need to enable the Advanced Features. This is done inView>>Advanced Features. This will make Name Mappings available for later mapping kerberos names (UTORid’s) to Windows account names.</li>
+    <li>In Active Directory Domains and Trusts you need to view the properties for the server (kdcw2k in my test server) and add a new trust. The trust name is UTORONTO.CA all in upper case. It is a <b>Realm Trust</b>, it is <b>Non Transitive</b> and it is a <b>One Way trust Outgoing</b>. (we trust the UTORONTO.CA realm is what we are saying). This trust must be set up in co-operation with the I+TS Network Services group, that maintain the UTORONTO.CA Kerberos realm. They will add a “principal” for your server with the appropriate dns name for the server and they will set a trust password. You will use that I+TS provided password for that principal to create your trust.
+    
+    <p><b>Note:</b>For my testing we were using rather simple trust passwords and I was forced to disable the strict password rules on the Windows 2003 server. Now that we know it works, more complex passwords can be used for the trust to avoid having to relax the password rules. So far we have only been able to make the Kerberos authentication work in what is called single DES mode. For example, for my working test server the principal krbtgt/KDCW2K.CNS.UTORONTO.CA@UTORONTO.CA has the following key only:</p>
+    <p>Key: vno 1, DES cbc mode with CRC-32, no salt</p>
+    </li>
+
+    <li>You must tell the Windows server where to find the UTORONTO.CA Domain Controllers At a command prompt on the server type:
+      <pre>
+ksetup /addkdc UTORONTO.CA kerberos1.utoronto.ca
+ksetup /addkdc UTORONTO.CA kerberos2.utoronto.ca</pre>
+    </li>
+    <li>As a test, I would recommend creating a generic test account on the server. For that account, you need to map a UTORid to it. In Active Directory Users and Computers, create the account and set a password for the account that DOES NOT match the password for your UTORid account that you will map to this user account. Once the account is created, right click on the account and select Name Mappings and add a mapping for the UTORid. For example in my test server I created a user called <i>dirtball</i> and in the name mapping I added <i>sample@UTORONTO.CA</i>
+    <p><b>Note:</b>It is worth pointing out that you can map multiple UTORid users to a single Windows account name or you can map one to one.</p>
+    </li>
+    <li>That completes the server side of the setup.</li>
+  </ol>
+
+
+<h3 class="center-header" id="workstation">Workstation Setup</h3>
+
+Once you have set up your server, you will need to set up each individual workstation to authenticate to your server
+
+
+<ol type="1" id="oon">
+  <li>On the Windows XP workstation you also need to install the Support Tools found in \support\tools on the XP setup CD. This again adds the command line ksetup functionality required.</li>
+  <li>On the XP workstation you must tell it where to find the UTORONTO.CA kerberos domain controllers
+    <pre>
+ksetup /addkdc UTORONTO.CA kerberos1.utoronto.ca
+ksetup /addkdc UTORONTO.CA kerberos2.utoronto.ca</pre>
+  </li>
+  <li>Join the workstation to your Windows Domain.</li>
+</ol>
+
+Now at this stage when you reboot the workstation you should have multiple options for logging into the workstation. You should be able to:
+
+<ul>
+  <li>log into the local workstation if you have a local workstation account</li>
+  <li>log directly into your Windows domain if you have a valid domain account</li>
+  <li>log into the UTORONTO.CA domain using your UTORid and password.</li>
+</ul>
+
+You can log into the UTORONTO.CA domain in two different ways:
+
+<ol type="1" id="oon">
+  <li>select UTORONTO.CA from the domain drop-down and then type your UTORid as the username and your UTORid password for the password</li>
+  <li>type your username directly in the username field as sample@UTORONTO.CA</li>
+</ol>
+
+<p><b>Note:</b>You may want to experiment with how settings are saved and whether credentials are cached on the workstation to enable or prevent logins when the UTORONTO.CA domain is unreachable. One way may allow a login using a cached credential but may allow a login after a mapping has been removed for a UTORid in the Windows domain. The other way may prevent logins when a mapping has been removed but will also prevent logins if the UTORONTO.CA kerberos domain controllers are unreachable. I did not fully explore this relationship. I simply bumped into this cached credentials issue and moved on. Your mileage may vary.</p>
+
+<h3 class="center-header" id="populating">Populating the Active Directory Users</h3>
+
+<p>Once you have a working environment then you will want to populate the Active Directory with the users list and add all the required name mappings. You will need a list of UTORid’s. This can be arranged by contacting the I+TS group responsible for UTORauth. They will set up a scheduled extraction of the appropriate UTORid’s and make it available for download. Once downloaded you can script the rest.</p>
+
+<p>The following code is VBS (ie put it in a file called makeuser.vbs for example) code that can be run to create 1000 users called UTORid1 UTORid2 UTORid3… and map the UTORid sample@UTORONTO.CA to each of the 1000 accounts. You can modify this to read from a list of UTORid’s that you want to grant access to the server as you see fit. You will note that it sets a password for the account (the password in this case is the same for all accounts and is: <b>2be.secure.try.this</b></p>
+
+<pre>
+Set objRootDSE = GetObject("LDAP://rootDSE")
+
+Set objContainer = GetObject("LDAP://cn=Users," & _
+objRootDSE.Get("defaultNamingContext"))
+
+Const ADS_UF_NORMAL_ACCOUNT = 512
+
+For i = 1 To 1000
+  Set objUser = objContainer.Create("User", "cn=UTORid" & i)
+  objUser.Put "sAMAccountName", "UTORid" & i
+  objUser.Put "altSecurityIdentities", "Kerberos:sample@UTORONTO.CA"
+  objUser.SetInfo
+  objUser.SetPassword "2be.secure.try.this"
+  objUser.Put "userAccountControl", &H200
+  objUser.SetInfo
+Next
+
+WScript.Echo "1000 Users created."
+</pre>
+
+<p><b>Note:</b> You <b>must</b> set a password for each account but there is no need to use unique passwords and in fact there is no need to even know what the passwords are if you will never log into the Windows domain directly. You can set them to random passwords. Failure to set a password of some form leaves the account inactive. There are lots of resources for account management on the Microsoft site that will let you create and modify new accounts.</p>
+
+<h3 class="center-header" id="wins">Windows 7 Authentication</h3>
+
+<b>Note:</b> for the sake of brevity, the following registry entries are specified with <code>HKLM\S\MW\CV\P</code> substituted for:
+
+<pre>
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies
+</pre>
+
+Be sure to make the translation when you are editing these entries.
+
+Windows 7 must be set to use 3DES encryption instead of the default AES encryption. On the workstation you need the following registry key:
+
+<pre>
+[HKLM\S\MW\CV\P\System\Kerberos\Parameters]
+"supportedencryptiontypes"=dword:0000001f
+
+[HKLM\S\MW\CV\P\System]
+"DefaultLogonDomain"="UTORONTO.CA"
+
+[HKLM\S\MW\CV\P\System\Kerberos]
+"MitRealms_Enabled"=dword:00000001
+
+[HKLM\S\MW\CV\P\System\Kerberos\MitRealms]
+"UTORONTO.CA"="<f>0x00000008</f><k>kerberos1.utoronto.ca;kerberos2.utoronto.ca</k>"
+
+[HKLM\S\MW\CV\P\System\Kerberos\Parameters]
+"KdcValidation"=dword:00000002
+</pre>
+
+The following website was used as a reference for this information: <a href="http://www.umich.edu/~lannos/windows/win7-kerb-setup.html">http://www.umich.edu/~lannos/windows/win7-kerb-setup.html</a>.
+
+<p><b>Note:</b>This is known to work when the server is Windows Server 208 SP2 64 bit, but has not been tested on R2 yet.</p>
+
+
+
+<h3 class="center-header" id="contacts">I+TS Contacts</h3>
+
+Here are some contacts you may need. For questions about:
+<div class="center-header">
+  <table>
+  <tbody>
+  <tr>
+  <th align="right">the Windows side of things:</th>
+  <td>Terry Jones</td>
+  <td>(416) 978-4924</td>
+  </tr>
+  <tr>
+  <th align="right"><tt>UTORONTO.CA</tt> Kerberos principal:</th>
+  <td>network.services@utoronto.ca</td>
+  <td>(416) 946-8689</td>
+  </tr>
+  <tr>
+  <th align="right">UTORauth and UTORid lists:</th>
+  <td>utorauth@utoronto.ca</td>
+  <td></td>
+  </tr>
+  </tbody>
+  </table>
+</div>
+
+<h3 class="center-header" id="notes">Notes and Tips</h3>
+Here are a few observations/tips that may help you in the setup process.
+
+
+<ul>
+  <li>After a user has logged into a workstation, if their credentials are cached on the workstation then they can still log in after the name mapping has been removed from the Active Directory. I suggest not caching credentials but you may have reasons to want this.  </li>
+  <li>When debugging UTORid authentication the following may help. Examine the server event log files and then clear them if all looks well. Join the workstation to the domain and log into the domain using a regular domain account to make sure basic authentication is working, re-examine the event logs and clear them again. Log in using a UTORid and again examine the server event logs.</li>
+  <li>We have put up a page with some <a href="http://www.utorauth.utoronto.ca/?page=active_faq">questions that have been asked</a> about this process.  </li>
+</ul>
+
+<h3 class="center-header" id="work">Things That Work</h3>
+These are things that are known to work. 
+
+<ul>
+  <li>Pubcookie obviously works, but also you can get IIS to prompt you with Windows authentication via the web browser. This works when IIS is set to Basic authentication.  </li>
+  <li>Roaming profiles work after enabling the Computer policy setting “Allow Cross-Forest User Policy and Roaming Profiles” at Administrative Templates > Group Policy  </li>
+</ul>
+
+<h3 class="center-header" id="notwork">Things That Don't Work</h3>
+
+There are a few things known not to work and we welcome any insight/solutions/suggestions.
+
+<ul>
+  <li>You are supposed to be able to add name mappings from the command line using a ksetup command. Have not been able to get that to work</li>
+  <li>You are supposed to be able to map multiple users to one Windows logon using that same ksetup command using a wild card e.g. *@UTORONTO.CA</li>
+</ul>

@@ -1,0 +1,113 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.4;
+}
+
+p {
+  font-size: 14px;
+}
+
+.center-header{
+  text-align: center;
+}
+
+.sub-heading{
+  font-size: 19px;
+  font-weight: bold;
+}
+
+
+
+.my-header{
+  float: bottom;
+  background-color: black;
+  color: white;
+  text-align: center;
+  padding: 5%;
+  font-size: 200%;
+}
+
+.content{
+  float: left;
+  width: 75%;
+  
+}
+
+.my-navigation{
+  float: left;
+  background-color: blue;
+  padding-left: 10px;
+  padding-right: 10%;
+  padding-bottom: 100%;
+  color: white;
+  text-align: left;
+}
+
+
+
+.footer{
+  clear: both;
+  padding: 5%;
+  background-color: green;
+  text-align: center;
+}
+
+#oon{
+  padding-left: 5%;
+}
+
+#oot{
+  padding-left: 10%;
+}
+
+#ook{
+  padding-left: 2.5%;
+}
+
+.colla {
+  padding: 0 18px;
+  background-color: white;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+}
+
+.collapsible:hover {
+  background-color: #555;
+}
+
+.collapsible {
+  background-color: #777;
+  color: white;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+}
+
+#pdpls{
+  padding-top: 20px;
+}
+
+#plspad{
+  padding-top: 800px;
+}
+
+#ldivi{
+  background-color: #777;
+  padding-left: 75%; 
+  padding-top: 10px;
+}
+
+#nav_button{
+  color: inherit;
+}

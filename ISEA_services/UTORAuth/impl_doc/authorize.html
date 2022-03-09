@@ -1,0 +1,67 @@
+<h3 class="center-header">Authorization via LDAP</h3>
+
+<p>Once a user has been authenticated using PubCookie, your service may need to figure out what level of access they should be granted. This information is provided via the LDAP server, UTORable. Your service will connect to this LDAP server, query it for information about a particular person, and receive back a number of flags indicating the roles that the person assumes at the university. You can then use these flags to determine the level of access/privileges they should be granted.</p>
+
+<p>The first step in gaining access to UTORauth resources is to contact Russell Sutherland. Once it has been decided that your service is authorized by the appropriate parties on campus, you will be assigned a username and password pair. This, along with the IP address of the machine that will be accessing UTORable is our method of authenticating your service.</p>
+
+<p>Assuming that this is a web-based application that you are developing, you will be using some sort of scripting language to provide your users with dynamic content. Directions on how to get started with either PHP or Perl are given below.</p>
+
+<h3>PHP</h3>
+
+<p class="sub-heading">Requirements</p>
+You will need to get and compile LDAP client libraries from either the University of Michigan <a href="ftp://terminator.rs.itd.umich.edu/ldap/ldap-3.3.tar.Z">ldap-3.3 package</a>, <a href="http://developer.netscape.com/tech/directory/downloads.html">Netscape Directory SDK 3.0</a>  or <a href="ftp://ftp.openldap.org/pub/openldap/openldap-stable.tgz">OpenLDAP to compile PHP with LDAP support</a>.
+
+<p class="sub-heading">Installation</p>
+
+<p>LDAP support in PHP is not enabled by default. You will need to use the --with-ldap[=DIR] configuration option when compiling PHP to enable LDAP support. DIR is the LDAP base install directory. To enable SASL support, be sure --with-ldap-sasl[=DIR] is used, and that sasl.h exists on the system.</p>
+<p><b>Note to Win32 Users:</b> In order to enable this module on a Windows environment, you must copy several files from the DLL folder of the PHP/Win32 binary package to the SYSTEM folder of your windows machine. (Ex:C:\WINNT\SYSTEM32, or C:\WINDOWS\SYSTEM). For PHP <= 4.2.0 copy libsasl.dll, for PHP >= 4.3.0 copy libeay32.dll and ssleay32.dll to your SYSTEM folder.</p>
+
+
+<p class="sub-heading">Runtime</p>
+
+If you would like, you can use the simple class LDAP.php that contains the basic functionality to connect and query UTORable. If you choose to use this module, you will have to alter the lines that set the username and password:
+
+<pre>
+<b>LDAP.php</b>
+$this->ldap_user = "cn=<your_username>,ou=users," . $ldap_base;
+$this->ldap_pass = "<your_password>";</pre>
+
+A simple example of how you would use this class. This example simply connects to UTORable and decides to allow access on the basis of the isstudent flag:
+
+<pre>
+<b>sample_query.php</b>
+  # create a new LDAP object that will be used to query
+  # UTORable for an UTORid.
+  # 
+  $ldap = new LDAP('utorid');
+
+  # connect to the LDAP server, using your supplied
+  # username and password.
+  # 
+  $ldap->connect();
+
+  # fetch any data that exists for UTORid 'leeterry'.
+  # 
+  $ldap->fetch('leeterry');
+
+  # see if there was an attribute 'isstudent' returned
+  # that is set to be TRUE
+  # 
+  if ( $ldap->att('isstudent') ) {
+      allow_access();
+  }
+  else {
+      disallow_access();
+  }</pre>
+
+<h3>Perl</h3>
+
+<p class="sub-heading">Requirements</p>
+You will need to have the Net::LDAP module installed to get LDAP working under perl. This can be installed fairly simply with the CPAN tool.
+<p class="sub-heading">Runtime</p>
+A simple example how you would connect to UTORable and decide to allow access on the basis of the isstudent flag:
+
+<h3>Testing LDAP forom Windows</h3>
+If you are running Windows, and would just like to test your filter strings and username/password, you can use an LDAP browser such as the <a href="http://download.softerra.com/files/ldapbrowser26.msi">Softerra &#174; LDAP Browser</a>.
+
+<p>last updated 2006/06/26 15:56:51: v. 1.3</p>

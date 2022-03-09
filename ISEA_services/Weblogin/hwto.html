@@ -1,0 +1,108 @@
+<div id="oon">
+  <h3>Shibboleth Service Provider Installation and Configuration</h3>
+
+  <p>This site provides localized instructions to install and configure the Shibboleth service provider.</p>
+
+  <p class="sub-heading">1. Install the SP software</p>
+  <p>First step is to get the Shibboleth Service Provider (SP) software running. Installation instructions can be found at: <a href="https://wiki.shibboleth.net/confluence/display/SHIB2/Installation">https://wiki.shibboleth.net/confluence/display/SHIB2/Installation</a></p>
+
+  <p>The above site contains complete installation instructions for Linux and Windows platform servers. Get the SP software installed up to the point where the following URL works from your SP server: <a href="https://localhost/Shibboleth.sso/Status">https://localhost/Shibboleth.sso/Status</a>  </p>
+
+  <b>Notes:</b>
+  <ul id="oon">
+    <li>SELinux should be disabled or in permissive mode unless you know what you are doing.</li>
+    <li>NTP or some other time synchronization mechanism must be operating.</li>
+    <li>To add using yum, create a file in /etc/yum.repos.d such as shib-sp.repo. Copy the repo file from the desired repository (see the above site for a selection). Then, ‘yum install shibboleth’.</li>
+  </ul>
+
+  <p class="sub-heading">2.  Configuration of shibboleth2.xml</p>
+
+  <p>Note that the following instructions will guide you to configure your SP for the production shib environment at U of T. If you have non-standard configuration, send email to <a href="mailto:shib.admin@utoronto.ca">shib.admin@utoronto.ca</a>.</p>
+
+  <p>shibboleth.xml is the primary configuration file for the Shibboleth SP.</p>
+
+  <p>All filesystem path references below are in UNIX form, for Windows OS, please alter as appropriate.
+  
+  <p><b>a) entityID</b></p>
+
+  <table>
+    <tbody>
+    <tr>
+    <td class="bodytext">located in:</td>
+    <td></td>
+    <td class="bodytext style6">&lt;<span class="style6">ApplicationDefaults</span>&gt;</td>
+    </tr>
+    <tr>
+    <td class="bodytext">format:</td>
+    <td></td>
+    <td class="bodytext">https://sp.department_domain.utoronto.ca/unique_identifier</td>
+    </tr>
+    <tr>
+    <td class="bodytext">example:</td>
+    <td></td>
+    <td class="bodytext">https://sp.math.utoronto.ca/calculus_tutorial</td>
+    </tr>
+    </tbody>
+  </table>
+  
+  <p>The entityID uniquely identifies the SP. It is in URL form and should be chosen with the expectation that it may eventually be used as a resolvable DNS name but does not need to be resolvable now. The domain name portion of the entityID is not required be the same as the DNS hostname of the SP. It is very important that the entityID not change over the lifetime of the service since it’s value is used in the derivation of long-term persistent user identifiers.</p>
+
+  <p><b>b) Session Initiation (pointing to an IdP)</b></p>
+
+  <p>This configuration is used by the SP to determine what to do when there is no established session for the user eg. user authentication is required. It contains the name of the U of T Identity Provider (IdP) that will be used to establish a session with the user.</p>
+
+  <p>Add the following configuration under the Sessions object:</p>
+  
+  <pre>
+&#60;!– Default SessionInititator directs to
+
+idpz.utorauth.utoronto.ca (the production IdP) –>
+    
+&#60;SSO entityID=”https://idpz.utorauth.utoronto.ca/shibboleth”>
+    
+SAML2
+&#60;/SSO></pre>
+
+
+  <p><b>c) Metadata Configuration</b></p>
+
+  <p>This configuration is used by the SP to locate the SAML metadata which is the collection of shared configuration and security information used by all participants to create and process authentication and authorization information. Add the following configuration under the MetadataProvider object, comment out all other nested MetadataProvider blocks:  </p>
+
+  <pre>
+&#60;!– UofT Federation Metadata – served from sites.utoronto.ca –> <MetadataProvider type=”XML” url=”https://sites.utoronto.ca/security/UToronto_SAML_Metadata.xml” backingFilePath=”/etc/shibboleth/UToronto_SAML_Metadata.xml” reloadInterval=”3600″>
+
+&#60;MetadataFilter type=”RequireValidUntil” maxValidityInterval=”5184000″/>
+      
+&#60;MetadataFilter type=”Signature” verifyName=”false” certificate=”/etc/shibboleth/utorauth_metadata_verify.crt”/>
+      
+&#60;/MetadataProvider></pre>
+
+
+  <p><b>d) Metadata Verification Certificate</b></p>
+
+  <p>Download the following certificate from here: <a href="http://sites.utoronto.ca/security/projects/utorauth_metadata_verify.crt">http://sites.utoronto.ca/security/projects/utorauth_metadata_verify.crt</a></p> and store it at path <code>/etc/shibboleth/utorauth_metadata_verify.crt</code>
+
+  <p><b>e) New features in shibboleth version 3</b></p>
+
+  <p>Please refer to this documentation about how to implement multi-factor authentication login flow and define the customized session length: <a href="https://isea.utoronto.ca/shibboleth-migration-new-features-and-potential-impact/">https://isea.utoronto.ca/shibboleth-migration-new-features-and-potential-impact/</a>  </p>
+
+  <p><b>f) Completion</b></p>
+
+  <p>Metadata for the SP site needs to be created and installed in the internal federation file (specified in the MetadataProvider element above). You must submit the following information to the shibboleth operations team for this purpose:  </p>
+
+  <ol id="oon" type="1">
+    <li>entityID</li>
+    <li>Fully-qualified domain name of this service provider.</li>
+    <li>The self-signed X.509 certificate automatically generated during the shibboleth software install (usually /etc/shibboleth/sp-cert.pem).</li>
+  </ol>
+
+  <p>You can submit this using the webform on the following site: <a href="https://auth-admin.utoronto.ca/shib/app/sp-request">https://auth-admin.utoronto.ca/shib/app/sp-request</a>  </p>
+
+  <p><b>g) Troubleshooting</b></p>
+
+  <p>See the following site for tips to solve problems: <a href="http://www.utoronto.ca/security/projects/sp-troubleshoot.htm">http://www.utoronto.ca/security/projects/sp-troubleshoot.htm</a>  </p>
+
+  
+
+  </p>
+</div>

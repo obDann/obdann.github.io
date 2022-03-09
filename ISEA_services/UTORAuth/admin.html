@@ -1,0 +1,86 @@
+<script>
+  $(function(){
+    $("#bgutorid").load("./stg/bgutorid.html"); 
+  });
+</script>
+
+<h3> </h3>
+
+<div id="oon">
+This page is divided up into four sections
+<ul id="oon">
+  <li><a href="#overview">Overview of tools</a></li>
+  <li><a href="#usages">Tool Usages</a></li>
+  <li><a href="#format">Formatting Your Data Properly</a></li>
+  <li><a href="template">Template Letters</a></li>
+</ul>
+</div>
+
+<h2 class="center-header" id="overview">Overview of Tools</h2>
+
+<div id="oon">
+  <button class="collapsible">Batch Guest UTORid</button>
+  <div class="colla" id="bgutorid"></div>
+  <button class="collapsible">Fetch Identifiers</button>
+  <div class="colla">
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+  </div>
+  <button class="collapsible">Other Data Sources</button>
+  <div class="colla">
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+  </div>
+</div>
+
+
+
+<h2 class="center-header" id="usages">Using the tools</h2>
+
+<div id="oon">
+<p>Using these tools is a two step upload download process</p>
+
+<div class="sub-heading">1. Upload</div>
+<p>These tools only receive Excel Spreadsheet files in both the older .xls and newer .xlsx formats. The contents of your file will differ depending on which application you are using, and more details can be found on those pages. In addition, once you have logged into our secure website, you can always find out what the format of your file should be by clicking on the “Data Format” tab at the top of the webpage.</p>
+
+<div class="sub-heading">2. Download</div>
+<p>After your file has been processed, you will be able to download a file that contains all of your data plus three new fields. If you are using the Fetch Identifiers tool in create mode or the Manage Other Data tool, you are responsible to provide your students/staff/faculty with the information necessary to begin using their UTORid. We have provided a <a href="http://www.utorauth.utoronto.ca/?page=template_letters">few template letters</a> that will help you in this process.</p>
+
+<h3>The UTORid and SAK</h3>
+<p>More information on the UTORid can be <a href="http://www.utorauth.utoronto.ca/?page=about_utorid">found here</a>. Some of the people you upload may already have a UTORid and we attempt to re-use that UTORid rather than creating a new one. If a person does not already have a UTORid, a new one will be created along with a Secret Activation Key (SAK). The SAK is a one-time use password that will allow the person to set their personal password and choose a UTORmail address. Instructions on activating UTORids can be found at the UTORid site: <a href="https://www.utorid.utoronto.ca/">https://www.utorid.utoronto.ca/</a>.</p>
+
+<p><b>Note</b>: You can easily distinguish between re-used UTORids and new ones. Simply look in the SAK column and if there is an entry you have a new UTORid that needs to be activated. Otherwise the UTORid is already being used. If the owner of the UTORid cannot remember their password, they should contact the Information Commons Help Desk. Hours of operation and contact information can be <a href="http://sites.utoronto.ca/ic/helpdesk/helpdeskhours.html">found here</a>.</p>
+
+<h3>The Library Barcode</h3>
+
+
+<p>In addition to the UTORid, everyone you upload will also receive a library barcode. This barcode becomes active the day after it is created, and the person can start using it to access online resources even if they don’t have a library card yet. Once again, we will try to re-use old barcodes rather than creating a new one.</p>
+
+</div>
+
+<h2 class="center-header" id="format">Formatting Your Data Properly</h2>
+
+<div id="oon">
+  <p>For our server to be able to interpret the file you upload properly you must follow some simple guidelines.</p>
+  <ul id="oon">
+    <li>Your file must be an Excel Spreadsheet files in both the older <b>.xls</b> or newer <b>.xlsx</b> format. </li>
+    <li>Do not include any header lines that contain the names of the fields. These will just be ignored.</li>
+    <li>First and last names should <b>not</b> include commas, or titles such as “Dr.” or “Ms.”</li>
+    <li>Birthdates must be in the format: YYYY-MM-DD</li>
+  </ul>
+</div>
+
+<h2 class="center-header" id="template">Template Letters</h2>
+<div id="oon">
+<p>Once you have created UTORids and barcodes for your students or staff, you are responsible to communicate this information to them. We have a couple of template letters that should help you do this.</p>
+<ul id="oon">
+  <li>
+    <a href="https://isea.utoronto.ca/wp-content/uploads/2016/09/template-sak.doc">UTORid with SAK</a>
+    <p>This letter should be used for people to whom you are giving a brand new UTORid. It communicates the information necessary to set up and start using their UTORid.</p>
+  </li>
+  <li>
+    <a href="https://isea.utoronto.ca/wp-content/uploads/2016/09/template-nosak.doc">UTORid with no SAK</a>
+    <p>This letter should be used for people who already have a UTORid. It is a reminder of the services that are available to them and contains some instructions on obtaining a TCard, should they find that necessary.</p>
+  </li>
+</ul>
+
+<p>You can easily distinguish between re-used UTORids and new ones. Simply look in the SAK column of the file you downloaded and if there is an entry, you have a new UTORid that needs to be activated. Otherwise the UTORid is already being used. If the owner of the UTORid cannot remember their password, they should contact the Information Commons Help Desk. Hours of operation and contact information can be <a href="http://sites.utoronto.ca/ic/helpdesk/helpdeskhours.html">here</a>.</p>
+</div>

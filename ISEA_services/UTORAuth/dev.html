@@ -1,0 +1,55 @@
+<script src="../collapse.js"></script>
+<h2 class="center-header">For Developers</h2>
+<div id="oon">
+
+<p>This section is divided into two parts:</p>
+
+<ul id="oon">
+  <li><a href="#servdef">Service Definitions</a></li>
+  <li><a href="#faq">Frequently Asked Questions for Developers</a></li>
+</ul>
+
+</div>
+
+<h3 class="center-header" id="servdef">Service Definitions</h3>
+
+<div id="oon">
+  <p>The organization that maintains the official copy of any given piece of data. Permission to view any piece of data must be given by the authoritative source / Data Owner  </p>  
+
+  <p class="sub-heading">Kerberos</p>
+  Kerberos is an authentication technology out of MIT based on a 3rd party authentication agent called a KDC. Kerberos uses secret key cryptography, and ensures that no passwords are transmitted over the network. <a href="http://web.mit.edu/kerberos/www/">http://web.mit.edu/kerberos/www/</a>
+  <p class="sub-heading">LDAP</p>
+  LDAP (<b>L</b>ightweight <b>D</b>irectory <b>A</b>ccess <b>P</b>rotocol) is a lightweight directory designed to provide fast read access. UTORable is an LDAP directory since day-to-day operations only include users querying for information. <a href="http://www.openldap.org/">http://www.openldap.org/</a>
+  <p class="sub-heading">PHP</p>
+  A server-side scripting language widely used in the web-development world.  <a href="http://www.php.net/">http://www.php.net/</a>
+  <p class="sub-heading">PubCookie</p>
+  PubCookie is an open-source package that provides a common interface to a a number of different authentication services (like Kerberos, LDAP or NIS). There are currently modules for Apache and Microsoft IIS. The U of T  Weblogin server implemented with Pubcookie.  <a href="http://www.pubcookie.org">http://www.pubcookie.org</a>
+  <p class="sub-heading">Shibboleth</p>
+  Shibboleth is an open source software product that implements SAML (Security Assertion Markup Language). For more information see the following page. <a href="http://sites.utoronto.ca/security/projects/shibboleth.htm">http://sites.utoronto.ca/security/projects/shibboleth.htm</a>
+  <p class="sub-heading">TCard</p>
+  The primary UofT photo identification smart card. <a href="http://tcard.utoronto.ca/">http://tcard.utoronto.ca/</a>
+  <p class="sub-heading">UTID</p>
+  UTORauth’s unique identifier. Each person at the university is assigned a UTID when they appear in one of the data feeds that UTORauth receives. People do not know their UTID though; it is primarily used as a means of communication between machines.
+  <p class="sub-heading">UTORable</p>
+  UTORable referrs to the LDAP directory containing a person’s state flags. It is queried in real-time to compute the <a href="authorization">authorization</a> requirements for your application.
+  <p class="sub-heading">UTORid</p>
+  You can think of this as the public version of the UTID; it is the network ID that users will use to log into services around campus. <a href="http://www.utorid.utoronto.ca/">http://www.utorid.utoronto.ca/</a>
+  <p class="sub-heading">Weblogin</p>
+  UTORauth’s central point of single-sign-on authentication.  <a href="https://weblogin.utoronto.ca/">https://weblogin.utoronto.ca/</a>
+</div>
+
+
+<h3 class="center-header" id="faq">Frequently Asked Questions for Developers</h3>
+
+<button class="collapsible">I’d like to use UTORauth for my application; where do I start?</button>
+<div class="colla">
+  <p>All queries regarding access to UTORauth resources should be directed towards <a href=" utorauth@utoronto.ca"> utorauth@utoronto.ca</a>, In your email, please be sure to include a one or two paragraph description of the service you will be providing.  </p>
+</div>
+<button class="collapsible">Does UTORauth decide who has access to the data?</button>
+<div class="colla">
+  <p>No. Since UTORauth is not the authoritative source for this data, we cannot permit access directly. However, UTORauth will act as a broker between you and the authoritative source to set up the access privileges.</p>
+</div>
+<button class="collapsible">I’m going to be building my database from the UTORable LDAP directory. Is there an appropriate time of day to do this?</button>
+<div class="colla">
+  <p>No. If you are planning on having a local copy of the data you receive from UTORauth, please consider setting up a batch feed. These are created daily and significantly reduce the load on the LDAP server.  </p>
+</div>
